@@ -38,8 +38,16 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
+  
 }
+
+// let morzeCodeArr=[expr].map(e=>{
+//    let changeElem = e.replace(/(10)/gm,'.')
+//    changeElem=  e.replace(/11/gm,'.')
+//    return changeElem
+// })
+// morzeCodeArr
+
 
 module.exports = {
     decode
