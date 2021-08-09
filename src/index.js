@@ -38,8 +38,34 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-  
-}
+
+    let newA=[]
+    
+      const replace11=expr.replace(/11/g,'-')
+      const replace10=replace11.replace(/10/g,'.')
+      const replace00=replace10.replace(/00/g,' ')
+      const replaceS=replace00.replace(/\*\*\*\*\*\*\*\*\*\*/g,' &')
+      const arr=replaceS.split(' ')
+      
+      for(let i=0;i<arr.length;i+=1){
+        if(arr[i]==''){
+          continue
+        }
+      
+        if(arr[i]=='&'){
+          newA.push(arr[i])
+        }
+      
+        for(let key in MORSE_TABLE ){
+      if(key==arr[i]){
+        newA.push(MORSE_TABLE[key])
+      }
+        }
+      }
+      const r=newA.join('')
+      return r.replace(/&/g,' ')
+      }
+
 
 // let morzeCodeArr=[expr].map(e=>{
 //    let changeElem = e.replace(/(10)/gm,'.')
