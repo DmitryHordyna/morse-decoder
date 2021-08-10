@@ -67,12 +67,6 @@ function decode(expr) {
       }
 
 
-// let morzeCodeArr=[expr].map(e=>{
-//    let changeElem = e.replace(/(10)/gm,'.')
-//    changeElem=  e.replace(/11/gm,'.')
-//    return changeElem
-// })
-// morzeCodeArr
 
 
 module.exports = {
