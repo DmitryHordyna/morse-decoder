@@ -37,37 +37,24 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
-function decode(expr) {
+function decode(e) {
+  let decode = [];
 
-    let newA=[]
-    
-      const replace11=expr.replace(/11/g,'-')
-      const replace10=replace11.replace(/10/g,'.')
-      const replace00=replace10.replace(/00/g,' ')
-      const replaceS=replace00.replace(/\*\*\*\*\*\*\*\*\*\*/g,' &')
-      const arr=replaceS.split(' ')
+  for (let i = 0; i < e.length; i += 10) {
+    let  zeroCode = e.slice(i, i + 10);
+
+      if ( zeroCode == '**********') {
+         decode += ' '
+         continue
+      };
+
+     let morseLetter = zeroCode.replace(/11/g,'-').replace(/10/g,'.').replace(/00/g,'');
+
+     decode+=MORSE_TABLE[morseLetter] ;
       
-      for(let i=0;i<arr.length;i+=1){
-        if(arr[i]==''){
-          continue
-        }
-      
-        if(arr[i]=='&'){
-          newA.push(arr[i])
-        }
-      
-        for(let key in MORSE_TABLE ){
-      if(key==arr[i]){
-        newA.push(MORSE_TABLE[key])
-      }
-        }
-      }
-      const r=newA.join('')
-      return r.replace(/&/g,' ')
-      }
-
-
-
+  }
+  return decode;
+}
 
 module.exports = {
     decode
